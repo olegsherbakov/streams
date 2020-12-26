@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "typeRoots": ["node_modules/@types"],
+    "baseUrl": "./",
+    "paths": {
+      "src/*": ["src/*"],
+      "@core/*": ["src/core/*"],
+      "@views/*": ["src/views/*"],
+      "@styles/*": ["src/styles/*"]
+    },
+    "esModuleInterop": true,
+    "experimentalDecorators": true
+  }
+}

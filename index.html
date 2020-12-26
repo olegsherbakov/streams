@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta charset="UTF-8" />
+    <title>Use streams</title>
+    <link rel="stylesheet" type="text/css" href="./reset.css" />
+    <link rel="stylesheet" type="text/css" href="./dist/styles.css" />
+    <style>
+      html,
+      body,
+      #app {
+        height: 100%;
+      }
+      #app {
+        position: relative;
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="./node_modules/react/umd/react.development.js"></script>
+    <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./node_modules/redux/dist/redux.js"></script>
+    <script src="./node_modules/react-redux/dist/react-redux.js"></script>
+    <script src="./node_modules/redux-thunk/dist/redux-thunk.js"></script>
+    <script src="./dist/index.js"></script>
+    <script>
+      console.log(`Streams`, window.Streams);
+      window.Streams.renderInto(document.getElementById("app"));
+    </script>
+  </body>
+</html>
