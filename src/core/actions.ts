@@ -1,5 +1,5 @@
-import { pipe, of } from 'rxjs'
-import { map } from 'rxjs/operators'
+import { fromEvent, merge, Subscription } from 'rxjs'
+import { sample, mapTo } from 'rxjs/operators'
 import { ActionCreator } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 
@@ -7,16 +7,24 @@ import { ACTIONS, IState, IDependencies, ActionTypes } from '@core/types'
 
 type ThunkResult<T> = ThunkAction<T, IState, IDependencies, ActionTypes>
 
+const listener = merge(
+  fromEvent(document, `mousedown`).pipe(mapTo(false)),
+  fromEvent(document, `mousemove`).pipe(mapTo(true))
+).pipe(sample(fromEvent(document, `mouseup`)))
+
+let subscription: Subscription
+
 export const switchOff: ActionCreator<ThunkResult<ActionTypes>> = () => {
   return function (dispatch, getState) {
     const {
       system: { isOn },
     } = getState()
 
-    // TODO dev
-    console.log(`?pipe`, pipe)
-    console.log(`?of`, of)
-    console.log(`?map`, map)
+    isOn
+      ? subscription.unsubscribe()
+      : (subscription = listener.subscribe((isDragging) => {
+          console.log(`Were you dragging?`, isDragging)
+        }))
 
     return dispatch({
       type: isOn ? ACTIONS.OFF : ACTIONS.ON,

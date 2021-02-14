@@ -1,3 +1,33 @@
-.Box {
-  color: black;
+@mixin panel {
+  padding: 20px;
+  border: 3px solid #ccc;
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 3px 3px 4px #555;
+}
+.LeftPanel {
+  flex: 0 0 280px;
+  @include panel;
+}
+.Desktop {
+  flex: 1 0 auto;
+  @include panel;
+}
+.Button {
+  border: none;
+  background: #6498f7;
+  color: #fff;
+  padding: 0 30px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px #555;
+
+  &:hover {
+    background: #79a9f1;
+  }
+}
+.Range {
+  width: 100%;
 }
