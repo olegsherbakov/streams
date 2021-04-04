@@ -8,6 +8,7 @@ export interface IState {
 }
 
 export interface IStateSystem {
+  range: number
   isOn: boolean
 }
 
@@ -19,6 +20,7 @@ export enum ACTIONS {
   ON,
   OFF,
   PUSH,
+  CHANGE,
 }
 
 export interface IOnAction {
@@ -34,4 +36,9 @@ export interface IPushAction {
   payload: { newItem: number }
 }
 
-export type ActionTypes = IOnAction | IOffAction | IPushAction
+export interface IChangeAction {
+  type: typeof ACTIONS.CHANGE
+  payload: { range: number }
+}
+
+export type ActionTypes = IOnAction | IOffAction | IPushAction | IChangeAction

@@ -33,14 +33,26 @@ export const switchOff: ActionCreator<ThunkResult<ActionTypes>> = () => {
 }
 
 export const createNew: ActionCreator<ThunkResult<ActionTypes>> = () => {
-  return function (dispatch, getState, { log }) {
-    const newItem = Math.floor(Math.random() * 1000)
-
-    log(`--createNew: ${newItem}`)
+  return function (dispatch, getState) {
+    const {
+      system: { range },
+    } = getState()
+    const newItem = Math.floor(Math.random() * range)
 
     return dispatch({
       type: ACTIONS.PUSH,
       payload: { newItem },
+    })
+  }
+}
+
+export const changeRange: ActionCreator<ThunkResult<ActionTypes>> = (
+  range: number
+) => {
+  return function (dispatch) {
+    return dispatch({
+      type: ACTIONS.CHANGE,
+      payload: { range },
     })
   }
 }

@@ -3,6 +3,7 @@ import { Reducer } from 'redux'
 import { ACTIONS, ActionTypes, IStateForm, IStateSystem } from '@core/types'
 
 const initialStateSystem: IStateSystem = {
+  range: 100,
   isOn: false,
 }
 
@@ -21,6 +22,13 @@ export const system: Reducer<IStateSystem> = function (
       return {
         ...state,
         isOn: false,
+      }
+    }
+    case ACTIONS.CHANGE: {
+      const { range } = action.payload
+      return {
+        ...state,
+        range,
       }
     }
   }
