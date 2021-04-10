@@ -3,6 +3,7 @@
 interface CssExports {
   'Button': string;
   'Desktop': string;
+  'Item': string;
   'LeftPanel': string;
   'Range': string;
 }

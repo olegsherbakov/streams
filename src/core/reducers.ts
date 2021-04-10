@@ -50,6 +50,24 @@ export const form: Reducer<IStateForm> = function (
         items: [...state.items, action.payload.newItem],
       }
     }
+    case ACTIONS.TAKE: {
+      const items = state.items.reduce<number[]>((result, count, index) => {
+        if (index === action.payload.index) {
+          if (count > 1) {
+            result.push(count - 1)
+          }
+        } else {
+          result.push(count)
+        }
+
+        return result
+      }, [])
+
+      return {
+        ...state,
+        items,
+      }
+    }
   }
   return state
 }

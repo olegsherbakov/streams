@@ -21,6 +21,7 @@ export enum ACTIONS {
   OFF,
   PUSH,
   CHANGE,
+  TAKE,
 }
 
 export interface IOnAction {
@@ -41,4 +42,14 @@ export interface IChangeAction {
   payload: { range: number }
 }
 
-export type ActionTypes = IOnAction | IOffAction | IPushAction | IChangeAction
+export interface ITakeAction {
+  type: typeof ACTIONS.TAKE
+  payload: { index: number }
+}
+
+export type ActionTypes =
+  | IOnAction
+  | IOffAction
+  | IPushAction
+  | IChangeAction
+  | ITakeAction

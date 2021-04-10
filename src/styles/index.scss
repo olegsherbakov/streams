@@ -5,29 +5,48 @@
   margin: 20px;
   box-shadow: 3px 3px 4px #555;
 }
-.LeftPanel {
-  flex: 0 0 280px;
-  @include panel;
-}
-.Desktop {
-  flex: 1 0 auto;
-  @include panel;
-}
-.Button {
-  border: none;
+@mixin ctrl {
+  text-align: center;
   background: #6498f7;
   color: #fff;
-  padding: 0 30px;
-  text-align: center;
-  height: 40px;
-  line-height: 40px;
-  border-radius: 5px;
   box-shadow: 1px 1px 2px #555;
+  cursor: pointer;
 
   &:hover {
     background: #79a9f1;
   }
 }
+.LeftPanel {
+  flex: 0 0 280px;
+  @include panel;
+}
+.Desktop {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: start;
+  gap: 10px;
+  flex: 1 0 0;
+  overflow: auto;
+  @include panel;
+}
+.Button {
+  border: none;
+  padding: 0 30px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 5px;
+  @include ctrl;
+}
 .Range {
   width: 100%;
+}
+.Item {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  line-height: 100px;
+  white-space: nowrap;
+  font-size: 50px;
+  @include ctrl;
 }

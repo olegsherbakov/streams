@@ -4,14 +4,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { IState } from '@core/types'
 import { switchOff, createNew, changeRange } from '@core/actions'
 import s from '@styles/index.scss'
+import Desktop from '@views/Desktop'
 
 const selectorIsOn = (state: IState) => state.system.isOn
 const selectorRange = (state: IState) => state.system.range
-const selectorItems = (state: IState) => state.form.items
 
-const Desktop: React.FC = () => {
+const Frame: React.FC = () => {
   const isOn = useSelector(selectorIsOn)
-  const items = useSelector(selectorItems)
   const range = useSelector(selectorRange)
   const dispatch = useDispatch()
   const onClickSwitch = () => dispatch(switchOff())
@@ -41,20 +40,17 @@ const Desktop: React.FC = () => {
         <input
           type="range"
           className={s.Range}
-          min="0"
+          min="10"
           max="100"
           value={range}
           onChange={onChangeRange}
           step="10"
         />{' '}
-        range: {range}
-        <br />
-        <br />
-        items: {items.join(`, `)}
+        current range: {range}
       </div>
-      <div className={s.Desktop}>Desktop</div>
+      <Desktop />
     </>
   )
 }
 
-export default Desktop
+export default Frame
